@@ -26,14 +26,15 @@ Then run the following commands to bootstrap your environment ::
     git clone https://github.com/benetech/PoetTraining
     cd api/poet
     pip install -r requirements/dev.txt
+    . env.sh
     flask run
 
 You will see a pretty welcome screen.
 
-Once you have installed your DBMS, run the following to create your app's
+Once you have installed your PostgreSQL, run the following to create your app's
 database tables and perform the initial migration ::
 
-    flask db migrate
+    . setup_db.sh
     flask db upgrade
     flask run
 
@@ -52,7 +53,7 @@ To open the interactive shell, run ::
 
     flask shell
 
-By default, you will have access to the flask ``app``.
+By default, you will have access to the flask ``app`` and ``models``.
 
 
 Running Tests
