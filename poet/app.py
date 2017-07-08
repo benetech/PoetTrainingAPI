@@ -41,6 +41,8 @@ def register_blueprints(app):
     app.register_blueprint(public.views.blueprint)
     from poet.api.v1.users.api import blueprint as users_v1
     app.register_blueprint(users_v1)
+    from poet.api.v1.uploads.api import blueprint as uploads_v1
+    app.register_blueprint(uploads_v1)
     return None
 
 

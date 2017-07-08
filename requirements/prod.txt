@@ -6,6 +6,9 @@ Werkzeug==0.12.2
 itsdangerous==0.24
 click>=5.0
 
+# API requirements
+marshmallow==2.13.5
+
 # Database
 Flask-SQLAlchemy==2.2
 psycopg2==2.7.1

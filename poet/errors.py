@@ -36,3 +36,15 @@ class NotFound(APIException):
     """APIException for a 404."""
 
     status_code = 404
+
+
+class UnsupportedMediaType(APIException):
+    """APIException for a 415."""
+
+    status_code = 415
+
+
+class UnprocessableEntity(APIException):
+    """APIException for a 422."""
+
+    status_code = 422

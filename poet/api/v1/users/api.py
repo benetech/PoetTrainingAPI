@@ -7,6 +7,8 @@ from poet.locales import Errors
 from poet.models import User
 from poet.utils import RESTBlueprint
 
+from .schema import UserSchema
+
 
 blueprint = RESTBlueprint('users', __name__, version='v1')
 
@@ -17,4 +19,4 @@ def find_user(uid):
     user = User.find(uid)
     if user is None:
         raise NotFound(Errors.USER_NOT_FOUND)
-    return jsonify(data='here it is!')
+    return jsonify(data=UserSchema().dump(user).data)
