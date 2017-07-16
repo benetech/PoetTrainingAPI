@@ -34,6 +34,22 @@ class Upload(UUIDMixin, Model):
         upload.save_file(file)
         return upload.save()
 
+    def retrieve_file(self):
+        """Return the file handler for the uploaded attachment."""
+        if current_app.config['SAVE_UPLOADS_LOCALLY']:
+            return self.retrieve_local_file()
+        else:
+            return self.retrieval_s3_file()
+
+    def retrieve_local_file(self):
+        """Return the local file attachment for the upload."""
+        return file(self.retrieval_location)
+
+    def retrieval_s3_file(self):
+        """Return the S3 file attachment for the upload."""
+        # TODO
+        pass
+
     def save_file(self, file):
         """Save the file to a destination based on the environment.
 

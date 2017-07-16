@@ -7,6 +7,7 @@ class Errors:
 
     BAD_GUID = ('bad-guid', 'We couldn\'t understand the format of the ID.')
     USER_NOT_FOUND = ('user-not-found', 'We couldn\'t find that user')
+    UPLOAD_NOT_FOUND = ('upload-not-found', 'We couldn\'t find that upload')
     RESOURCE_NOT_FOUND = ('resource-not-found',
                           'We couldn\'t find that resource')
     FILE_NOT_SENT = ('file-not-sent', 'No file was sent.')
