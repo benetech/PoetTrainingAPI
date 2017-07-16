@@ -6,6 +6,7 @@ ENV APP_DIR /usr/src/PoetTrainingAPI
 ENV BUILD_PACKAGES curl
 ENV RUNTIME_PACKAGES unzip
 ENV FLASK_APP $APP_DIR/autoapp.py
+ENV FLASK_DEBUG false
 
 RUN mkdir $APP_DIR
 
