@@ -56,12 +56,15 @@ def register_errorhandlers(app):
     @app.errorhandler(404)
     def handle_api_not_found(err):
         """Handle a generic 404 abort."""
+        err = NotFound(Errors.RESOURCE_NOT_FOUND, status_code=404)
+        return jsonify(err.to_dict()), 404
         raise NotFound(Errors.RESOURCE_NOT_FOUND)
 
     @app.errorhandler(500)
     def handle_internal_error(err):
         """Handle a generic 500 abort."""
-        raise APIException(Errors.UNKNOWN_ERROR, status_code=500)
+        err = APIException(Errors.UNKNOWN_ERROR, status_code=500)
+        return jsonify(err.to_dict()), 500
 
     return None
 
