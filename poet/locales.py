@@ -10,6 +10,7 @@ class Errors:
     RESOURCE_NOT_FOUND = ('resource-not-found',
                           'We couldn\'t find that resource')
     FILE_NOT_SENT = ('file-not-sent', 'No file was sent.')
+    FILE_NOT_FOUND = ('file-not-found', 'That file could not be found.')
     FILE_NAME_REQUIRED = ('file-name-required', 'A submitted file must have a '
                                                 'name.')
     IMAGE_TYPE_NOT_SUPPORTED = ('image-type-not-supported',
