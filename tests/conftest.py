@@ -8,7 +8,7 @@ from poet.app import create_app
 from poet.database import db as _db
 from poet.settings import TestConfig
 
-from .factories import UserFactory
+from .factories import UploadFactory, UserFactory
 
 
 @pytest.yield_fixture(scope='function')
@@ -49,3 +49,11 @@ def user(db):
     user = UserFactory(password='myprecious')
     db.session.commit()
     return user
+
+
+@pytest.fixture
+def upload(db):
+    """An upload for the tests."""
+    upload = UploadFactory()
+    db.session.commit()
+    return upload

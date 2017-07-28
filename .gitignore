@@ -41,3 +41,12 @@ env/
 
 # py.test cache
 .cache
+
+# ignore local image uploads
+poet/local_uploads/*.png
+poet/local_uploads/*.jpg
+poet/local_uploads/*.jpe
+poet/local_uploads/*.jpeg
+poet/local_uploads/*.gif
+poet/local_uploads/*.svg
+poet/local_uploads/*.bmp
