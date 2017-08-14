@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """The API module for emails."""
 import boto3
-from flask import current_app, jsonify
+from flask import current_app, jsonify, render_template
 from webargs import fields
 from webargs.flaskparser import use_args
 
@@ -26,7 +26,7 @@ def generate_email_body(annotation):
         should be generated
     :return string: An HTML formatted string for the email body
     """
-    return 'this is the body of the email'
+    return render_template('annotation-email.html', annotation=annotation)
 
 
 def send_email(annotation, email):

@@ -24,6 +24,8 @@ class Config(object):
         'EMAIL_SUBJECT', 'Your image annotation from Poet Training!')
     REPLY_TO_EMAIL = os.environ.get(
         'REPLY_TO_EMAIL', 'poet-support@benetech.org')
+    BASE_CDN_HOST = os.environ.get('BASE_CDN_HOST',
+                                   's3-us-west-2.amazonaws.com')
 
 
 class ProdConfig(Config):

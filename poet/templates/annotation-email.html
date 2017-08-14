@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Your Image Annotation</title>
+  </head>
+  <body>
+    <img src="{{ annotation.upload.cdn_link }}" alt="{{ annotation.description }}" />
+    <div>
+      <h3>Your annotation for this image was:</h3>
+      <div>{{ annotation.description }}</div>
+    </div>
+  </body>
+</html>

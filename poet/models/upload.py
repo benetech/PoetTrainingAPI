@@ -111,6 +111,14 @@ class Upload(UUIDMixin, Model):
                             self.retrieval_location, fp)
         return fp
 
+    @property
+    def cdn_link(self):
+        """A link to the CDN location for the file attached to the upload."""
+        return 'https://{host}/{dir}/{fname}'.format(
+            host=current_app.config['BASE_CDN_HOST'],
+            dir=current_app.config['S3_UPLOADS_BUCKET'],
+            fname=self.retrieval_location)
+
     def __repr__(self):
         """Represent instance as a unique string."""
         return '<Upload({filename!r})>'.format(filename=self.filename)
