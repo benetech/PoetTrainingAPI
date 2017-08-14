@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
 from flask import Flask, jsonify
+from marshmallow.exceptions import ValidationError
 
 from poet import commands, public, models
 from poet.errors import APIException, NotFound
@@ -43,6 +44,10 @@ def register_blueprints(app):
     app.register_blueprint(users_v1)
     from poet.api.v1.uploads.api import blueprint as uploads_v1
     app.register_blueprint(uploads_v1)
+    from poet.api.v1.emails.api import blueprint as emails_v1
+    app.register_blueprint(emails_v1)
+    from poet.api.v1.annotations.api import blueprint as annotations_v1
+    app.register_blueprint(annotations_v1)
     return None
 
 
@@ -65,6 +70,26 @@ def register_errorhandlers(app):
         """Handle a generic 500 abort."""
         err = APIException(Errors.UNKNOWN_ERROR, status_code=500)
         return jsonify(err.to_dict()), 500
+
+    @app.errorhandler(422)
+    def handle_unprocessable_entity(err):
+        # webargs attaches additional metadata to the `data` attribute
+        exc = getattr(err, 'exc')
+        if exc:
+            # Get validations from the ValidationError object
+            messages = exc.messages
+        else:
+            messages = ['Invalid request']
+        return jsonify({
+            'messages': messages,
+        }), 422
+
+    @app.errorhandler(ValidationError)
+    def handle_marshmallow_validation_error(ex):
+        response = jsonify(error_code="data-validation-error",
+                           error_message=ex.messages)
+        response.status_code = 422
+        return response
 
     return None
 

@@ -8,7 +8,7 @@ from poet.app import create_app
 from poet.database import db as _db
 from poet.settings import TestConfig
 
-from .factories import UploadFactory, UserFactory
+from .factories import AnnotationFactory, UploadFactory, UserFactory
 
 
 @pytest.yield_fixture(scope='function')
@@ -57,3 +57,11 @@ def upload(db):
     upload = UploadFactory()
     db.session.commit()
     return upload
+
+
+@pytest.fixture
+def annotation(db, upload):
+    """An annotation for the tests."""
+    annotation = AnnotationFactory(upload=upload)
+    db.session.commit()
+    return annotation

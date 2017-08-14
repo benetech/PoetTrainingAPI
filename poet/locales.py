@@ -18,3 +18,11 @@ class Errors:
     FILE_EMPTY = ('file-required', 'An empty file was sent.')
     UNKNOWN_ERROR = ('unknown-error', 'An unknown error occurred. Contact an '
                                       'administrator if the problem persists.')
+
+
+class Success:
+    """A class to contain all the success constants."""
+
+    EMAIL_SENT = ('email-sent', 'Email sent successfully!')
+    ANNOTATION_CREATED = ('annotation-created',
+                          'Annotation successfully created!')

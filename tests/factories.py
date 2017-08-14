@@ -7,7 +7,7 @@ from factory.alchemy import SQLAlchemyModelFactory
 from werkzeug.datastructures import FileStorage
 
 from poet.database import db
-from poet.models import Upload, User
+from poet.models import Annotation, Upload, User
 
 
 class BaseFactory(SQLAlchemyModelFactory):
@@ -45,3 +45,14 @@ class UploadFactory(BaseFactory):
         """Factory configuration."""
 
         model = Upload
+
+
+class AnnotationFactory(BaseFactory):
+    """Annotation factory."""
+
+    description = Sequence(lambda n: 'this is the {}th annotation'.format(n))
+
+    class Meta:
+        """Factory configuration."""
+
+        model = Annotation

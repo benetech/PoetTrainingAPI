@@ -13,10 +13,17 @@ class Config(object):
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SAVE_UPLOADS_LOCALLY = True
+    SEND_EMAILS = False
     S3_UPLOADS_BUCKET = os.environ.get('S3_UPLOADS_BUCKET', 'poet-uploads')
     UPLOADS_DIR = os.path.join(APP_DIR, 'local_uploads')
     # limit uploads to 16 MB
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024
+    FROM_EMAIL = os.environ.get('FROM_EMAIL', 'noreply@benetech.org')
+    CC_EMAIL = os.environ.get('CC_EMAIL', 'some-email@benetech.org')
+    EMAIL_SUBJECT = os.environ.get(
+        'EMAIL_SUBJECT', 'Your image annotation from Poet Training!')
+    REPLY_TO_EMAIL = os.environ.get(
+        'REPLY_TO_EMAIL', 'poet-support@benetech.org')
 
 
 class ProdConfig(Config):
@@ -26,6 +33,7 @@ class ProdConfig(Config):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SAVE_UPLOADS_LOCALLY = False
+    SEND_EMAILS = True
 
 
 class DevConfig(Config):
