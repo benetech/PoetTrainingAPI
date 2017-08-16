@@ -26,3 +26,6 @@ Flask-Bcrypt==0.7.1
 
 # Caching
 Flask-Caching>=1.0.0
+
+# AWS SDK
+boto3>=1.4.6
