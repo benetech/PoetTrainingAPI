@@ -10,6 +10,7 @@ class AnnotationSchema(Schema):
 
     created_at = fields.DateTime(dump_only=True)
     description = fields.Str(required=True)
+    category = fields.Str(required=False)
     id = fields.UUID(dump_only=True)
     upload = fields.Nested(UploadSchema, dump_only=True)
     upload_id = fields.UUID(load_only=True, required=True)

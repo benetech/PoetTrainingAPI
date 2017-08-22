@@ -27,6 +27,7 @@ class TestFindAnnotation:
         res = testapp.get(self.base_url.format(id=annotation.id))
         assert res.status_code == 200
         assert res.json['data']['id'] == str(annotation.id)
+        assert res.json['data']['category'] is not None
 
 
 @pytest.mark.usefixtures('db')
@@ -39,7 +40,6 @@ class TestCreateAnnotation:
         """Test that create without an upload_id fails."""
         res = testapp.post_json(
             self.base_url, {'description': 'this is a description'}, status=422)
-        print(res)
         assert 'upload_id' in res.json['error_message']
 
     def test_bad_upload_id(self, testapp):
@@ -53,9 +53,12 @@ class TestCreateAnnotation:
     def test_annotation_create_works(self, testapp, upload):
         """Test that creating an annotation works fine."""
         desc = 'this is a description'
+        category = 'Line Chart'
         res = testapp.post_json(self.base_url,
                                 {'description': desc,
-                                 'upload_id': str(upload.id)})
+                                 'upload_id': str(upload.id),
+                                 'category': category})
         assert res.status_code == 200
         assert res.json['message']
         assert res.json['data']['description'] == desc
+        assert res.json['data']['category'] == category

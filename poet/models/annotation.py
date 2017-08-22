@@ -16,3 +16,4 @@ class Annotation(UUIDMixin, Model):
     upload_id = reference_col('uploads', nullable=False)
     upload = relationship('Upload', backref='annotations')
     description = Column(db.Text, nullable=False)
+    category = Column(db.String(80), nullable=True)

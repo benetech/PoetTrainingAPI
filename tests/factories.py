@@ -51,6 +51,7 @@ class AnnotationFactory(BaseFactory):
     """Annotation factory."""
 
     description = Sequence(lambda n: 'this is the {}th annotation'.format(n))
+    category = 'Venn Diagram'
 
     class Meta:
         """Factory configuration."""
