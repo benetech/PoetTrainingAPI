@@ -30,5 +30,8 @@ Flask-Caching>=1.0.0
 # AWS SDK
 boto3>=1.4.6
 
-# A friendly library for parsing and validating HTTP request arguments 
+# A friendly library for parsing and validating HTTP request arguments
 webargs>=1.8.1
+
+# CORS requests
+Flask-Cors==3.0.3

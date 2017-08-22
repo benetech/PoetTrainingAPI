@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
 from flask import Flask, jsonify
+from flask_cors import CORS
 from marshmallow.exceptions import ValidationError
 
 from poet import commands, public, models
@@ -33,6 +34,7 @@ def register_extensions(app):
     cache.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
+    CORS(app, origins=[r'.*\.diagramcenter\.org'])
     migrate.init_app(app, db)
     return None
 
