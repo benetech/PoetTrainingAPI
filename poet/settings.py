@@ -19,11 +19,8 @@ class Config(object):
     # limit uploads to 16 MB
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024
     FROM_EMAIL = os.environ.get('FROM_EMAIL', 'noreply@benetech.org')
-    CC_EMAIL = os.environ.get('CC_EMAIL', 'some-email@benetech.org')
     EMAIL_SUBJECT = os.environ.get(
         'EMAIL_SUBJECT', 'Your image annotation from Poet Training!')
-    REPLY_TO_EMAIL = os.environ.get(
-        'REPLY_TO_EMAIL', 'poet-support@benetech.org')
     BASE_CDN_HOST = os.environ.get('BASE_CDN_HOST',
                                    's3-us-west-2.amazonaws.com')
 

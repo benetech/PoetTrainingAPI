@@ -71,7 +71,6 @@ def send_ses_email(body, dest_email):
             Source=current_app.config['FROM_EMAIL'],
             Destination={
                 'ToAddresses': [dest_email],
-                'CcAddresses': [current_app.config['CC_EMAIL']]
             },
             Message={
                 'Subject': {
@@ -82,8 +81,7 @@ def send_ses_email(body, dest_email):
                         'Data': body
                     }
                 }
-            },
-            ReplyToAddresses=[current_app.config['REPLY_TO_EMAIL']]
+            }
         )
         return True
     except:
