@@ -109,6 +109,7 @@ class Upload(UUIDMixin, Model):
         fp = BytesIO()
         s3.download_fileobj(current_app.config['S3_UPLOADS_BUCKET'],
                             self.retrieval_location, fp)
+        fp.seek(0)
         return fp
 
     @property
