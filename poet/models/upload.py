@@ -98,7 +98,7 @@ class Upload(UUIDMixin, Model):
 
         :return file-like:
         """
-        return open(self.retrieval_location, 'r')
+        return open(self.retrieval_location, 'rb')
 
     def get_s3_file(self):
         """Return a file pointer to the S3 object.
