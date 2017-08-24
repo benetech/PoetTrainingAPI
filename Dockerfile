@@ -15,6 +15,6 @@ COPY . $APP_DIR
 RUN pip install -r requirements/prod.txt && \
     chmod -R ug+rw $APP_DIR
 
-ENTRYPOINT ["flask"]
+ENTRYPOINT ["gunicorn"]
 
-CMD ["run", "-h", "0.0.0.0"]
+CMD ["-b", "0.0.0.0:5000", "-w", "3", "poet.app:create_app()"]
