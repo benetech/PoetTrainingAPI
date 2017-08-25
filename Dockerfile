@@ -12,11 +12,9 @@ WORKDIR $APP_DIR
 
 COPY . $APP_DIR
 
-COPY hosts /etc/hosts
-
 RUN pip install -r requirements/prod.txt && \
     chmod -R ug+rw $APP_DIR
 
 ENTRYPOINT ["gunicorn"]
 
-CMD ["--timeout", "305", "--log-level", "debug", "-b", "0.0.0.0:5000", "-w", "3", "--worker-class=egg:meinheld#gunicorn_worker", "poet.app:create_app()"]
+CMD ["--log-level", "debug", "-b", "0.0.0.0:5000", "-w", "3", "--worker-class=egg:meinheld#gunicorn_worker", "poet.app:create_app()"]
