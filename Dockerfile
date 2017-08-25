@@ -17,4 +17,4 @@ RUN pip install -r requirements/prod.txt && \
 
 ENTRYPOINT ["gunicorn"]
 
-CMD ["--log-level", "debug", "-b", "0.0.0.0:5000", "-w", "3", "--worker-class=egg:meinheld#gunicorn_worker", "poet.app:create_app()"]
+CMD ["--log-level", "debug", "-b", "0.0.0.0:5000", "-w", "3", "--worker-class=egg:meinheld#gunicorn_worker", "--access-logfile", "-", "poet.app:create_app()"]
