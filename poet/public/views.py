@@ -17,7 +17,6 @@ def load_user(user_id):
 @blueprint.route('/healthcheck')
 def healthcheck():
     """Return a health check for the ELB."""
-    print('test log')
     return jsonify(status='ok')
 
 

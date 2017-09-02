@@ -66,7 +66,7 @@ def send_ses_email(body, dest_email):
     :return bool: whether or not the email could be sent
     """
     try:
-        ses_client = boto3.client('ses')
+        ses_client = boto3.client('ses', region_name='us-east-1')
         ses_client.send_email(
             Source=current_app.config['FROM_EMAIL'],
             Destination={
